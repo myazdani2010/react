@@ -11,12 +11,12 @@ class App extends Component {
     ]
   };
 
-  switchNameHandler = () => {
+  switchNameHandler = nameParam => {
     console.log("switchNameHandler: was clicked!");
     // DON'T DO THIS: this.state.persons[0].name = "Maximilian";
     this.setState({
       persons: [
-        { name: "Maximilian", age: 28 },
+        { name: nameParam, age: 28 },
         { name: "Manu", age: 29 },
         { name: "Stephanie", age: 22 }
       ]
@@ -28,7 +28,10 @@ class App extends Component {
       <div className="App">
         <h1>Hello from React</h1>
         {/* NOTE: don't add the parantecies for the method in the onClick */}
-        <button onClick={this.switchNameHandler}>Swith me</button>
+        {/* NOTE: the arrow function is not ideal way here due to performance insufficiency */}
+        <button onClick={() => this.switchNameHandler("Maximilian!!")}>
+          Swith me
+        </button>
         <Person
           name={this.state.persons[0].name}
           age={this.state.persons[0].age}
@@ -36,7 +39,7 @@ class App extends Component {
         <Person
           name={this.state.persons[1].name}
           age={this.state.persons[1].age}
-          click={this.switchNameHandler} // on clicking this Person Paragrapth the method switchNameHandler will be called
+          click={this.switchNameHandler.bind(this, "Max!!")} // on clicking this Person Paragrapth the method switchNameHandler will be called
         >
           My Hobbies: Racing
         </Person>
