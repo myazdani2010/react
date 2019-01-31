@@ -36,6 +36,7 @@ class App extends Component {
         <Person
           name={this.state.persons[1].name}
           age={this.state.persons[1].age}
+          click={this.switchNameHandler} // on clicking this Person Paragrapth the method switchNameHandler will be called
         >
           My Hobbies: Racing
         </Person>
