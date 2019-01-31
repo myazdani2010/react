@@ -34,12 +34,23 @@ class App extends Component {
   };
 
   render() {
+    const inlineStyle = {
+      backgroundColor: "white",
+      font: "inherit",
+      border: "1x solid blue",
+      padding: "8px",
+      cursor: "pointer"
+    };
+
     return (
       <div className="App">
         <h1>Hello from React</h1>
         {/* NOTE: don't add the parantecies for the method in the onClick */}
         {/* NOTE: the arrow function is not ideal way here due to performance insufficiency */}
-        <button onClick={() => this.switchNameHandler("Maximilian!!")}>
+        <button
+          style={inlineStyle}
+          onClick={() => this.switchNameHandler("Maximilian!!")}
+        >
           Swith me
         </button>
         <Person
