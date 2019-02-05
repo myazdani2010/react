@@ -49,6 +49,33 @@ class App extends Component {
       cursor: "pointer"
     };
 
+    let persons = null;
+
+    if (this.state.showPerson) {
+      persons = (
+        <div>
+          <Person
+            name={this.state.persons[0].name}
+            age={this.state.persons[0].age}
+          />
+          <Person
+            name={this.state.persons[1].name}
+            age={this.state.persons[1].age}
+            click={this.switchNameHandler.bind(this, "Max!!")} // on clicking this Person Paragrapth the method switchNameHandler will be called
+            changed={this.nameChangedHandler}
+          >
+            My Hobbies: Racing
+          </Person>
+          <Person
+            name={this.state.persons[2].name}
+            age={this.state.persons[2].age}
+          />
+        </div>
+      );
+    } else {
+      persons = null;
+    }
+
     return (
       <div className="App">
         <h1>Hello from React</h1>
@@ -57,26 +84,7 @@ class App extends Component {
         <button style={inlineStyle} onClick={this.togglePersonsHandler}>
           Toggle Persons
         </button>
-        {this.state.showPerson ? (
-          <div>
-            <Person
-              name={this.state.persons[0].name}
-              age={this.state.persons[0].age}
-            />
-            <Person
-              name={this.state.persons[1].name}
-              age={this.state.persons[1].age}
-              click={this.switchNameHandler.bind(this, "Max!!")} // on clicking this Person Paragrapth the method switchNameHandler will be called
-              changed={this.nameChangedHandler}
-            >
-              My Hobbies: Racing
-            </Person>
-            <Person
-              name={this.state.persons[2].name}
-              age={this.state.persons[2].age}
-            />
-          </div>
-        ) : null}
+        {persons}
       </div>
     );
   }
