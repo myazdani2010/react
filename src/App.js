@@ -11,18 +11,10 @@ class App extends Component {
     ]
   };
 
-  switchNameHandler = nameParam => {
-    console.log("switchNameHandler: was clicked!");
-    // DON'T DO THIS: this.state.persons[0].name = "Maximilian";
-    this.setState({
-      persons: [
-        { name: nameParam, age: 28 },
-        { name: "Manu", age: 29 },
-        { name: "Stephanie", age: 22 }
-      ],
-      otherState: "some other value",
-      showPerson: false
-    });
+  deletePersonHandler = personIndex => {
+    const persons = [...this.state.persons]; //create a copy of the array before editing the original state object
+    persons.splice(personIndex, 1); //remove one element from array at specified index
+    this.setState({ persons: persons });
   };
 
   nameChangedHandler = event => {
@@ -54,8 +46,14 @@ class App extends Component {
     if (this.state.showPerson) {
       persons = (
         <div>
-          {this.state.persons.map(person => {
-            return <Person name={person.name} age={person.age} />;
+          {this.state.persons.map((person, index) => {
+            return (
+              <Person
+                click={() => this.deletePersonHandler(index)}
+                name={person.name}
+                age={person.age}
+              />
+            );
           })}
         </div>
       );
