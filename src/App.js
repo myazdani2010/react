@@ -80,9 +80,18 @@ class App extends Component {
       persons = null;
     }
 
+    const classes = [];
+    if (this.state.persons.length <= 2) {
+      classes.push("red"); // classes = ['red']
+    }
+    if (this.state.persons.length <= 1) {
+      classes.push("bold"); // classes = ['red', 'bold']
+    }
+
     return (
       <div className="App">
         <h1>Hello from React</h1>
+        <p className={classes.join(" ")}> This is really working!</p>
         {/* NOTE: don't add the parantecies for the method in the onClick */}
         {/* NOTE: the arrow function is not ideal way here due to performance insufficiency */}
         <button style={inlineStyle} onClick={this.togglePersonsHandler}>
