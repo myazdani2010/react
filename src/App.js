@@ -18,7 +18,7 @@ class App extends Component {
   };
 
   nameChangedHandler = (event, id) => {
-    //find the index on the person in the state array
+    //find the index of the person in the state array
     const personIndex = this.state.persons.findIndex(p => {
       return p.id === id;
     });
@@ -48,7 +48,8 @@ class App extends Component {
 
   render() {
     const inlineStyle = {
-      backgroundColor: "white",
+      backgroundColor: "green",
+      color: "white",
       font: "inherit",
       border: "1x solid blue",
       padding: "8px",
@@ -60,6 +61,7 @@ class App extends Component {
     if (this.state.showPerson) {
       persons = (
         <div>
+          {/* Loop though persons array */}
           {this.state.persons.map((person, index) => {
             return (
               <Person
@@ -73,6 +75,7 @@ class App extends Component {
           })}
         </div>
       );
+      inlineStyle.backgroundColor = "red";
     } else {
       persons = null;
     }
