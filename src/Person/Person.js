@@ -3,8 +3,13 @@ import "./Person.css";
 import Radium from "radium";
 
 const person = props => {
+  const style = {
+    "@media (min-width: 500px)": {
+      width: "450px"
+    }
+  };
   return (
-    <div className="Person">
+    <div className="Person" style={style}>
       {/* use the click from props to call the method defined in that click */}
       <p onClick={props.click}>
         I'm {props.name}, and I am {props.age} years old!

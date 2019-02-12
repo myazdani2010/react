@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import Person from "./Person/Person";
-import Radium from "radium";
+import Radium, { StyleRoot } from "radium";
 
 class App extends Component {
   state = {
@@ -98,16 +98,18 @@ class App extends Component {
     }
 
     return (
-      <div className="App">
-        <h1>Hello from React</h1>
-        <p className={classes.join(" ")}> This is really working!</p>
-        {/* NOTE: don't add the parantecies for the method in the onClick */}
-        {/* NOTE: the arrow function is not ideal way here due to performance insufficiency */}
-        <button style={inlineStyle} onClick={this.togglePersonsHandler}>
-          Toggle Persons
-        </button>
-        {persons}
-      </div>
+      <StyleRoot>
+        <div className="App">
+          <h1>Hello from React</h1>
+          <p className={classes.join(" ")}> This is really working!</p>
+          {/* NOTE: don't add the parantecies for the method in the onClick */}
+          {/* NOTE: the arrow function is not ideal way here due to performance insufficiency */}
+          <button style={inlineStyle} onClick={this.togglePersonsHandler}>
+            Toggle Persons
+          </button>
+          {persons}
+        </div>
+      </StyleRoot>
     );
   }
 }
