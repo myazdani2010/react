@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
 import Person from "./Person/Person";
-import Radium, { StyleRoot } from "radium";
 
 class App extends Component {
   state = {
@@ -54,11 +53,7 @@ class App extends Component {
       font: "inherit",
       border: "1x solid blue",
       padding: "8px",
-      cursor: "pointer",
-      ":hover": {
-        backgroundColor: "lightgreen",
-        color: "black"
-      }
+      cursor: "pointer"
     };
 
     let persons = null;
@@ -81,10 +76,6 @@ class App extends Component {
         </div>
       );
       inlineStyle.backgroundColor = "red";
-      inlineStyle[":hover"] = {
-        backgroundColor: "salmon",
-        color: "black"
-      };
     } else {
       persons = null;
     }
@@ -98,20 +89,18 @@ class App extends Component {
     }
 
     return (
-      <StyleRoot>
-        <div className="App">
-          <h1>Hello from React</h1>
-          <p className={classes.join(" ")}> This is really working!</p>
-          {/* NOTE: don't add the parantecies for the method in the onClick */}
-          {/* NOTE: the arrow function is not ideal way here due to performance insufficiency */}
-          <button style={inlineStyle} onClick={this.togglePersonsHandler}>
-            Toggle Persons
-          </button>
-          {persons}
-        </div>
-      </StyleRoot>
+      <div className="App">
+        <h1>Hello from React</h1>
+        <p className={classes.join(" ")}> This is really working!</p>
+        {/* NOTE: don't add the parantecies for the method in the onClick */}
+        {/* NOTE: the arrow function is not ideal way here due to performance insufficiency */}
+        <button style={inlineStyle} onClick={this.togglePersonsHandler}>
+          Toggle Persons
+        </button>
+        {persons}
+      </div>
     );
   }
 }
 
-export default Radium(App);
+export default App;
